@@ -1,3 +1,3 @@
-Roy,Alexandre,aaa@aaa.com,Draxanele,MonCodeClient,1/12/2022,Client
-Roy,Yannick,yyy@aaa.com,Kainync,TheKingYetAgain,13/12/2022,Client
-Busque,Jeffrey,jjj@aaa.com,Feyjfre,TheTrueMorshu,30/01/2023,Client
+Roy§Alexandre§aaa@aaa.com§Draxanele§MonCodeClient§1/12/2022§Client
+Roy§Yannick§yyy@aaa.com§Kainync§TheKingYetAgain§13/12/2022§Client
+Busque§Jeffrey§jjj@aaa.com§Feyjfre§TheTrueMorshu§30/01/2023§Client

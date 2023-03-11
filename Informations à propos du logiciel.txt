@@ -1,0 +1,65 @@
+Informations à propos du logiciel
+
+Nom : レwind (Le symbole « レ » (re) est un symbole provenant du katakana,
+	le katakana fait partie du système d'écriture japonais, le titre se prononce donc « Rewind ».
+	C’est le mot que trouvé d’après le symbole pour sa forme ressemblant à un triangle « play ».)
+
+
+Description du contenu du dossier :
+
+-Bande annonces : Dossier contenant les vidéos des bandes annonces jouables.
+-Images : Dossier contenant les images utilisées par le logiciel.
+-Plans : Dossier contenant les plans des modèles de classes et de la navigation du logiciel sous forme d’image « .png ».
+-Sauvegardes : Dossier contenant toutes les informations sauvegardés dans les lignes de texte dans un fichier « .txt ».
+
+-Main : Le script à enclencher pour démarrer le logiciel comme prévu pour, entre autres, la récupération des informations.
+-GUIs : Le script se chargeant des fenêtres. (Graphical User Interface)
+-Personne : Le script se chargeant des informations, de leurs sauvegardes et de leurs récupération.
+(Comptes, cartes de crédits, informations sur les films et etc.)
+-Test unitaire : Rien de plus qu’un test unitaire sur une des fonctions du script de GUIs et un autre test
+simulant la création d’un compte client.
+
+
+Description des comptes :
+
+-Les comptes clients sont des comptes qui nécessitent au moins une carte de crédit liée au compte pour 
+accéder à la lecture des films, ils peuvent aussi exclusivement accéder à la fenêtre d’ajout des cartes
+de crédit et voir dans une autre fenêtre l’inventaire de leurs cartes.
+-Les comptes employés ont la permission d’accéder à la lecture des films sans conditions.
+Les comptes de grades 1 permettent la création d’un compte employé et la suppression de n’importe quel
+compte en plus de tous pouvoir en consulter leurs informations. Il est possible de créer des comptes
+employés avec des grades entre 1 à 5, mais seulement celui de 1 a vraiment une différence par rapport aux autres.
+-Toutes les informations de chaque compte sont dans leur fichier de texte respectif dans le dossier
+« Sauvegardes » (Dans « Répertoire des clients » et « Répertoire des employé »)
+
+
+voici des listes séparées par des virgules représantant respectivement:
+(Prénom, 	 Nom, 	Nom d'utilisateur, Adresse courrielle, 	Code, 		Grade)
+
+-(Alexandre,	 Roy, 	gérant,		   aaa@aaa.com,		assistG2, 	1)
+-(Sebastien Paul,Charest,gérant,	   ccc@aaa.com, 	primeG1, 	1)
+-(Alexandre, 	 Roy,	Draxanele,	   aaa@aaa.com, 	MonCodeClient, 	Client)
+-(Yannick, 	 Roy,	Kainync,	   yyy@aaa.com, 	TheKingYetAgain,Client)
+-(Jeffrey, 	 Busque,Feyjfre,	   jjj@aaa.com,		TheTrueMorshu, 	Client)
+
+Note : 
+Le dossier contenant tout le contenu du logiciel peut être déplacé à sa guise en
+autant que son contenu reste placé de la même façon par rapport à chacun. 
+
+
+Création d’un compte :
+-Aucune case ne doit être vide.
+-Lors de la création d’un compte le script va vérifier si le nom d’utilisateur et l’adresse courrielle a déjà été utilisé par un autre compte. (J’ai un peu triché pour mes comptes, ils ont les mêmes adresses.) Le script va aussi vérifier la crédibilité de l’adresse courrielle : Il faut juste qu’elle ait un « @ » pour passer cette vérification. Un code doit au moins avoir 8 caractères.
+-Si les informations inscrites ne satisfassent pas les conditions demandées, un avertissement sera posé à côté de la case, précisant l’ajustement nécessaire.
+-Lors de la création d’un compte, tout autre caractère spéciaux que ceux dans la prochaine liste pourrait ne pas être supportés et pourrait même causer des erreurs dans le logiciel : à, À, á, â, Â, ä, Ä, ã, Ã, å, Å, é, É, è, È, ê, Ê, í, ì, Ì, î, Î, ï, ó, Ó, ò, Ò, ô, Ô, ü, Ü, ø, Ø, ú, Ú, ù, Ù, û, Û, ü, Ü, ý, ỳ, Ỳ, ŷ, Ŷ, ÿ, Ÿ, ç, Ç, ñ, Ñ, æ, Æ, œ et Œ.
+Note : « Á », « Ï », « Í » et « Ý » sont étrangement des caractères inutilisables en plus de « § ».
+
+
+Création d’une carte :
+-Aucune case de doit être vide ou laissé sans réponse.
+-La quantité de chiffres demandée doit être conforme à celle donné, tout autre caractères que des chiffres seront enlevés lors de la vérification et le de l’enregistrement.
+-Si les informations inscrites ne satisfassent pas les conditions demandées, un avertissement sera posé à côté de la case, précisant l’ajustement nécessaire.
+
+Les schémas des scripts sont dans le dossier « Plans »
+
+Lien GitHub : https://github.com/Creativipi/Rewind

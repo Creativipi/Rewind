@@ -570,8 +570,16 @@ class addEmployeApp():
             self.alerteGrade = Label(self.fen, text="Le grade n'a pas été sélectionné", foreground="#eaa")
             self.alerteGrade.grid(row=7, column=3, sticky="w")
 
-        self.fen.after(200, partial(self.suiteAvertissement, liste))
+        if liste[8] == False:
+            txts = [self.prenomTxt.get(), self.nomTxt.get(), self.userTxt.get(), self.emailTxt.get(), self.code1Txt.get(), self.code2Txt.get()]
+            somme = ""
+            for ligne in txts:
+                somme = somme + detectCaratere(ligne)
+            self.approuvement.destroy()
+            self.approuvement = Label(self.fen, text=compilationCaractere(somme), foreground="#eaa")
+            self.approuvement.grid(row=7, column=3, sticky="w")
 
+        self.fen.after(200, partial(self.suiteAvertissement, liste))
     def suiteAvertissement(self, liste):
         "Change la couleur des messages d'avertissement"
         # De base
@@ -636,6 +644,15 @@ class addEmployeApp():
             self.alerteGrade = Label(self.fen, text="Le grade n'a pas été sélectionné", foreground="#e33")
             self.alerteGrade.grid(row=7, column=3, sticky="w")
 
+        if liste[8] == False:
+            txts = [self.prenomTxt.get(), self.nomTxt.get(), self.userTxt.get(), self.emailTxt.get(), self.code1Txt.get(), self.code2Txt.get()]
+            somme = ""
+            for ligne in txts:
+                somme = somme + detectCaratere(ligne)
+            self.approuvement.destroy()
+            self.approuvement = Label(self.fen, text=compilationCaractere(somme), foreground="#e33")
+            self.approuvement.grid(row=7, column=3, sticky="w")
+
     def retour(self):
         "Permet de retourner à la fenêtre de l'affichage des comptes"
         self.fen.destroy()
@@ -643,7 +660,7 @@ class addEmployeApp():
 
     def confirmer(self):
         "Vérifie et accepte un compte s'il est moindrement valable ou envoie un avertissement"
-        checklist = [False, False, True, True, False, False, False, False]
+        checklist = [False, False, True, True, False, False, False, False, True]
         verdict = True
 
         # Vérification
@@ -671,6 +688,18 @@ class addEmployeApp():
             checklist[6] = True
         if self.gradeTxt.get() != self.optionGrade[0]:
             checklist[7] = True
+        if detectCaratere(self.prenomTxt.get()) != "":
+            checklist[8] = False
+        elif detectCaratere(self.nomTxt.get()) != "":
+            checklist[8] = False
+        elif detectCaratere(self.userTxt.get()) != "":
+            checklist[8] = False
+        elif detectCaratere(self.emailTxt.get()) != "":
+            checklist[8] = False
+        elif detectCaratere(self.code1Txt.get()) != "":
+            checklist[8] = False
+        elif detectCaratere(self.code2Txt.get()) != "":
+            checklist[8] = False
 
         for check in checklist:
             if check == False:
@@ -1924,7 +1953,7 @@ class mainWindow():
         parametreApp()
 
 
-class signInApp():
+class signUpApp():
     "Responsable de la création des nouveaux comptes clients"
 
     def __init__(self):
@@ -2080,6 +2109,16 @@ class signInApp():
             self.alerteCode2 = Label(self.fen, text="Le code n'a pas au moins 8 caractères", foreground="#eaa")
             self.alerteCode2.grid(row=6, column=3, sticky="w")
 
+        if liste[7] == False:
+            txts = [self.prenomTxt.get(), self.nomTxt.get(), self.userTxt.get(), self.emailTxt.get(), self.code1Txt.get(), self.code2Txt.get()]
+            somme = ""
+            for ligne in txts:
+                somme = somme + detectCaratere(ligne)
+            self.approuvement.destroy()
+            self.approuvement = Label(self.fen, text=compilationCaractere(somme), foreground="#eaa")
+            self.approuvement.grid(row=7, column=3, sticky="w")
+
+
         self.fen.after(200, partial(self.suiteAvertissement, liste))
     def suiteAvertissement(self, liste):
         "Change la couleur des messages d'avertissement"
@@ -2141,6 +2180,15 @@ class signInApp():
             self.alerteCode2 = Label(self.fen, text="Le code n'a pas au moins 8 caractères", foreground="#e33")
             self.alerteCode2.grid(row=6, column=3, sticky="w")
 
+        if liste[7] == False:
+            txts = [self.prenomTxt.get(), self.nomTxt.get(), self.userTxt.get(), self.emailTxt.get(), self.code1Txt.get(), self.code2Txt.get()]
+            somme = ""
+            for ligne in txts:
+                somme = somme + detectCaratere(ligne)
+            self.approuvement.destroy()
+            self.approuvement = Label(self.fen, text=compilationCaractere(somme), foreground="#e33")
+            self.approuvement.grid(row=7, column=3, sticky="w")
+
     def retourCompte(self):
         "Permet d'aller à la fenêtre de connection"
         self.fen.destroy()
@@ -2148,7 +2196,7 @@ class signInApp():
 
     def confirmer(self):
         "Vérifie les informations données et commence la connexion si elles correspondent"
-        checklist = [False, False, True, True, False, False, False]
+        checklist = [False, False, True, True, False, False, False, True]
         verdict = True
 
         # Vérification
@@ -2156,8 +2204,9 @@ class signInApp():
             checklist[0] = True
         if self.nomTxt.get() != "":
             checklist[1] = True
+
         for employe in Personne.registre.getEmployes():
-            if employe.user == self.userTxt.get() or employe.user == "":
+            if employe.user == self.userTxt.get()  or employe.user == "":
                 checklist[2] = False
         for client in Personne.registre.getClients():
             if client.user == self.userTxt.get():
@@ -2174,6 +2223,18 @@ class signInApp():
             checklist[5] = True
         if self.code1Txt.get() == self.code2Txt.get():
             checklist[6] = True
+        if detectCaratere(self.prenomTxt.get()) != "":
+            checklist[7] = False
+        elif detectCaratere(self.nomTxt.get()) != "":
+            checklist[7] = False
+        elif detectCaratere(self.userTxt.get()) != "":
+            checklist[7] = False
+        elif detectCaratere(self.emailTxt.get()) != "":
+            checklist[7] = False
+        elif detectCaratere(self.code1Txt.get()) != "":
+            checklist[7] = False
+        elif detectCaratere(self.code2Txt.get()) != "":
+            checklist[7] = False
 
         for check in checklist:
             if check == False:
@@ -2282,7 +2343,7 @@ class logInApp():
     def nouveauCompte(self):
         "Permet d'aller à la fenêtre de création de compte"
         self.fen.destroy()
-        signInApp()
+        signUpApp()
 
     def avertissement(self):
         "Fait apparaître des messages d'avertissement où il est nécessaire"
@@ -2317,9 +2378,15 @@ class logInApp():
             identifiant = str(self.userTxt.get())
             code = str(self.codeTxt.get())
 
+            print("identifiant = " + str(self.userTxt.get()))
+            print("Code = " + str(self.codeTxt.get()))
+
             while numeroTable != len(tableEmployes) and found == False:
 
                 print("---------- Employé numéro {} ----------".format(numeroTable+1))
+                print("user = " + tableEmployes[numeroTable].user)
+                print("email = " + str(tableEmployes[numeroTable].email))
+                print("Code = " + str(tableEmployes[numeroTable].code))
                 if identifiant == str(tableEmployes[numeroTable].user) and code == str(tableEmployes[numeroTable].code)\
                         or identifiant == str(tableEmployes[numeroTable].email) and code == str(tableEmployes[numeroTable].code):
                     #print("Gotcha!")
@@ -2497,6 +2564,46 @@ def filterDigits(text):
 
     return finalText
 
+def detectCaratere(text):
+    "Renvoie les caractères corrompant les sauvegardes d'un texte"
+
+    listeCaracteres = ["§", "Á", "Ï", "Í", "Ý"]
+    caracteresDetectes = ""
+    ligneFinalle = ""
+
+    for caractere in listeCaracteres:
+
+        if caractere in text:
+            caracteresDetectes = caracteresDetectes + caractere
+
+    return caracteresDetectes
+
+def compilationCaractere(text):
+    "Renvoie textuellement le message d'erreur sur les caractères"
+
+    ligneFinalle = "Les caractètres "
+    nombreCaracteres = len(text)
+
+
+    for caractere in text:
+
+        if caractere in ligneFinalle:
+            nombreCaracteres = nombreCaracteres - 1
+        else:
+            if ligneFinalle == "Les caractètres " and nombreCaracteres == 1:
+                ligneFinalle = "Le caractère « {} » n'est pas utilisable".format(caractere)
+                nombreCaracteres = 0
+            elif nombreCaracteres == 1:
+                ligneFinalle =  "{} et « {} » ne sont pas utilisables".format(ligneFinalle, caractere)
+                nombreCaracteres = 0
+            elif ligneFinalle == "Les caractètres ":
+                ligneFinalle = ligneFinalle + "« {} »".format(caractere)
+                nombreCaracteres = nombreCaracteres - 1
+            else:
+                ligneFinalle = ligneFinalle + ", « {} »".format(caractere)
+                nombreCaracteres = nombreCaracteres - 1
+
+    return ligneFinalle
 
 if __name__ == "__main__" and info.wasActive == False:
     info.wasActive = True

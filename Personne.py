@@ -514,8 +514,8 @@ def recuperationClients():
         for client in ligneClient:
             try:
                 infos = client.replace("\n", "")
-                splitInfos = infos.split(",")
-                cl = Client(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]), iCS(splitInfos[3]), iCS(splitInfos[4]), iCS(splitInfos[5]), iCS(splitInfos[6]))
+                splitInfos = infos.split("§")
+                cl = Client(iCS(splitInfos[0].replace("Â","")), iCS(splitInfos[1].replace("Â","")), iCS(splitInfos[2].replace("Â","")), iCS(splitInfos[3].replace("Â","")), iCS(splitInfos[4].replace("Â","")), iCS(splitInfos[5].replace("Â","")), iCS(splitInfos[6].replace("Â","")))
                 listeClients.append(cl)
             except:
                 print("La sauvegarde des clients est corrompue")
@@ -539,8 +539,8 @@ def recuperationEmployes():
         for employe in ligneEmploye:
             try:
                 infos = employe.replace("\n", "")
-                splitInfos = infos.split(",")
-                emp = Employe(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]), iCS(splitInfos[3]), iCS(splitInfos[4]), iCS(splitInfos[5]), iCS(splitInfos[6]))
+                splitInfos = infos.split("§")
+                emp = Employe(iCS(splitInfos[0].replace("Â","")), iCS(splitInfos[1].replace("Â","")), iCS(splitInfos[2].replace("Â","")), iCS(splitInfos[3].replace("Â","")), iCS(splitInfos[4].replace("Â","")), iCS(splitInfos[5].replace("Â","")), iCS(splitInfos[6].replace("Â","")))
                 listeEmployes.append(emp)
             except:
                 print("La sauvegarede des employés est corrompue")
@@ -564,8 +564,8 @@ def recuperationActeurs():
         for acteur in ligneActeur:
             try:
                 infos = acteur.replace("\n", "")
-                splitInfos = infos.split(",")
-                act = Acteur(iCS(splitInfos[0]), iCS(splitInfos[1]), int(splitInfos[2]))
+                splitInfos = infos.split("§")
+                act = Acteur(iCS(splitInfos[0].replace("Â","")), iCS(splitInfos[1].replace("Â","")), int(splitInfos[2]))
                 listeActeurs.append(act)
             except:
                 print("La sauvegarde des acteurs est corrompue")
@@ -596,8 +596,8 @@ def recuperationCartes():
 
                     for item in cartes:
                         infos = item.replace("\n", "")
-                        splitInfos = infos.split(",")
-                        c = CarteDeCredit(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]), iCS(splitInfos[3]))
+                        splitInfos = infos.split("§")
+                        c = CarteDeCredit(iCS(splitInfos[0].replace("Â","")), iCS(splitInfos[1].replace("Â","")), iCS(splitInfos[2].replace("Â","")), iCS(splitInfos[3].replace("Â","")))
                         listeCartes.append(c)
 
                     listeClientsCarte.append(listeCartes)
@@ -633,7 +633,7 @@ def recuperationFilmsJoues():
                     for item in films:
                         infos = item.replace("\n", "")
                         splitInfos = infos.split("§")
-                        f = FilmsJoues(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]), iCS(splitInfos[3]), iCS(splitInfos[4]))
+                        f = FilmsJoues(iCS(splitInfos[0].replace("Â","")), iCS(splitInfos[1].replace("Â","")), iCS(splitInfos[2].replace("Â","")), iCS(splitInfos[3].replace("Â","")), iCS(splitInfos[4].replace("Â","")))
                         listeFilms.append(f)
 
                     listeActeurFilm.append(listeFilms)
@@ -663,7 +663,7 @@ def recuperationFilms():
             try:
                 infos = film.replace("\n", "")
                 splitInfos = infos.split("§")
-                flm = Film(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]))
+                flm = Film(iCS(splitInfos[0].replace("Â","")), iCS(splitInfos[1].replace("Â","")), iCS(splitInfos[2].replace("Â","")))
                 listeFilms.append(flm)
             except:
                 print("La sauvegarde des films est corrompue")
@@ -695,7 +695,7 @@ def recuperationGenres():
                     for item in genres:
                         infos = item.replace("\n", "")
                         splitInfos = infos.split("§")
-                        gnr = Genre(iCS(splitInfos[0]), iCS(splitInfos[1]))
+                        gnr = Genre(iCS(splitInfos[0].replace("Â","")), iCS(splitInfos[1].replace("Â","")))
                         listeGenres.append(gnr)
 
                     listeFilmsGenre.append(listeGenres)
