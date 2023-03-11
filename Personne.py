@@ -59,7 +59,7 @@ class Personne:
 
 
     def __str__(self):
-        return "{},{}".format(self.nom, self.prenom)
+        return "{}§{}".format(self.nom, self.prenom)
 
 registre = Personne("O'Nyme", "Anne") #Ne jamais enlever!
 
@@ -120,7 +120,7 @@ class Client(Personne):
 
 
     def __str__(self):
-        return "{},{},{},{},{},{},{}".format(self.nom, self.prenom, self.email, self.user, self.code, self.date, self.grade)
+        return "{}§{}§{}§{}§{}§{}§{}".format(self.nom, self.prenom, self.email, self.user, self.code, self.date, self.grade)
 
 class Employe(Personne):
     "Employés avec leur nom, prénom, ainsi que d'autres informations pertinentes à leur sujet."
@@ -167,7 +167,7 @@ class Employe(Personne):
 
 
     def __str__(self):
-        return "{},{},{},{},{},{},{}".format(self.nom, self.prenom, self.email, self.user, self.code, self.date, self.grade)
+        return "{}§{}§{}§{}§{}§{}§{}".format(self.nom, self.prenom, self.email, self.user, self.code, self.date, self.grade)
 
 class Acteur(Personne):
     "Acteurs avec leur nom, prénom et numéro identificateur (le numéro identificateur est inutile)."
@@ -193,7 +193,7 @@ class Acteur(Personne):
 
 
     def __str__(self):
-        return "{},{},{}".format(self.nom, self.prenom, self.numero)
+        return "{}§{}§{}".format(self.nom, self.prenom, self.numero)
 
 
 class CarteDeCredit():
@@ -215,7 +215,7 @@ class CarteDeCredit():
 
 
     def __str__(self):
-        return "{},{},{},{}".format(self.getNumeroCarte(), self.getNumeroSecurite(), self.getDateExpiration(), self.getType())
+        return "{}§{}§{}§{}".format(self.getNumeroCarte(), self.getNumeroSecurite(), self.getDateExpiration(), self.getType())
 
 class FilmsJoues():
     "Liste de toutes les informations pertinentes sur les acteurs par rapport à leurs films joués."
@@ -749,68 +749,68 @@ def recuperationAll():
             film.addGenre(genre)
         numeroFilm = numeroFilm + 1
 
-def iCS(ligne):
+def iCS(text):
     "Permet le support de certains caractères spéciaux dans leurs transitions entre l'UTF-8 des sauvegardes et les scripts"
-    ligne = ligne.replace("Ã ", "à")
-    ligne = ligne.replace("Ã€", "À")
-    ligne = ligne.replace("Ã¢", "â")
-    ligne = ligne.replace("Ã‚", "Â")
-    ligne = ligne.replace("Ã¤", "ä")
-    ligne = ligne.replace("Ã„", "Ä")
+    text = text.replace("Ã ", "à")
+    text = text.replace("Ã€", "À")
+    text = text.replace("Ã¢", "â")
+    text = text.replace("Ã‚", "Â")
+    text = text.replace("Ã¤", "ä")
+    text = text.replace("Ã„", "Ä")
     # Le caractère « Á » est inutilisable
-    ligne = ligne.replace("Ã©", "é")
-    ligne = ligne.replace("Ã‰", "É")
-    ligne = ligne.replace("Ã¨", "è")
-    ligne = ligne.replace("Ãˆ", "È")
-    ligne = ligne.replace("Ãª", "ê")
-    ligne = ligne.replace("ÃŠ", "Ê")
-    ligne = ligne.replace("Ã«", "ë")
-    ligne = ligne.replace("Ã‹", "Ë")
-    ligne = ligne.replace("Ã­", "í")
-    ligne = ligne.replace("Ã¬", "ì")
-    ligne = ligne.replace("ÃŒ", "Ì")
-    ligne = ligne.replace("Ã®", "î")
-    ligne = ligne.replace("ÃŽ", "Î")
-    ligne = ligne.replace("Ã¯", "ï")
+    text = text.replace("Ã©", "é")
+    text = text.replace("Ã‰", "É")
+    text = text.replace("Ã¨", "è")
+    text = text.replace("Ãˆ", "È")
+    text = text.replace("Ãª", "ê")
+    text = text.replace("ÃŠ", "Ê")
+    text = text.replace("Ã«", "ë")
+    text = text.replace("Ã‹", "Ë")
+    text = text.replace("Ã­", "í")
+    text = text.replace("Ã¬", "ì")
+    text = text.replace("ÃŒ", "Ì")
+    text = text.replace("Ã®", "î")
+    text = text.replace("ÃŽ", "Î")
+    text = text.replace("Ã¯", "ï")
     # Les caractères « Ï » et « Í » sont inutilisables
-    ligne = ligne.replace("Ã³", "ó")
-    ligne = ligne.replace("Ã“", "Ó")
-    ligne = ligne.replace("Ã²", "ò")
-    ligne = ligne.replace("Ã’", "Ò")
-    ligne = ligne.replace("Ã´", "ô")
-    ligne = ligne.replace("Ã”", "Ô")
-    ligne = ligne.replace("Ã¶", "ö")
-    ligne = ligne.replace("Ã–", "Ö")
-    ligne = ligne.replace("Ã¸", "ø")
-    ligne = ligne.replace("Ã˜", "Ø")
-    ligne = ligne.replace("Ãº", "ú")
-    ligne = ligne.replace("Ãš", "Ú")
-    ligne = ligne.replace("Ã¹", "ù")
-    ligne = ligne.replace("Ã™", "Ù")
-    ligne = ligne.replace("Ã»", "û")
-    ligne = ligne.replace("Ã›", "Û")
-    ligne = ligne.replace("Ã¼", "ü")
-    ligne = ligne.replace("Ãœ", "Ü")
-    ligne = ligne.replace("Ã½", "ý")
-    ligne = ligne.replace("á»³", "ỳ")
-    ligne = ligne.replace("á»²", "Ỳ")
-    ligne = ligne.replace("Å·", "ŷ")
-    ligne = ligne.replace("Å¶", "Ŷ")
-    ligne = ligne.replace("Ã¿", "ÿ")
-    ligne = ligne.replace("Å¸", "Ÿ")
+    text = text.replace("Ã³", "ó")
+    text = text.replace("Ã“", "Ó")
+    text = text.replace("Ã²", "ò")
+    text = text.replace("Ã’", "Ò")
+    text = text.replace("Ã´", "ô")
+    text = text.replace("Ã”", "Ô")
+    text = text.replace("Ã¶", "ö")
+    text = text.replace("Ã–", "Ö")
+    text = text.replace("Ã¸", "ø")
+    text = text.replace("Ã˜", "Ø")
+    text = text.replace("Ãº", "ú")
+    text = text.replace("Ãš", "Ú")
+    text = text.replace("Ã¹", "ù")
+    text = text.replace("Ã™", "Ù")
+    text = text.replace("Ã»", "û")
+    text = text.replace("Ã›", "Û")
+    text = text.replace("Ã¼", "ü")
+    text = text.replace("Ãœ", "Ü")
+    text = text.replace("Ã½", "ý")
+    text = text.replace("á»³", "ỳ")
+    text = text.replace("á»²", "Ỳ")
+    text = text.replace("Å·", "ŷ")
+    text = text.replace("Å¶", "Ŷ")
+    text = text.replace("Ã¿", "ÿ")
+    text = text.replace("Å¸", "Ÿ")
     # Le caractère « Ý » est inutilisable
-    ligne = ligne.replace("Ã§", "ç")
-    ligne = ligne.replace("Ã‡", "Ç")
-    ligne = ligne.replace("Ã±", "ñ")
-    ligne = ligne.replace("Ã‘", "Ñ")
-    ligne = ligne.replace("Ã¦", "æ")
-    ligne = ligne.replace("Ã†", "Æ")
-    ligne = ligne.replace("Å“", "œ")
-    ligne = ligne.replace("Å’", "Œ")
+    text = text.replace("Ã§", "ç")
+    text = text.replace("Ã‡", "Ç")
+    text = text.replace("Ã±", "ñ")
+    text = text.replace("Ã‘", "Ñ")
+    text = text.replace("Ã¦", "æ")
+    text = text.replace("Ã†", "Æ")
+    text = text.replace("Å“", "œ")
+    text = text.replace("Å’", "Œ")
     # Caractères utilisés pour la représentation d'autres caractères, juste au cas-où
-    ligne = ligne.replace("Ã¡", "á")
-    ligne = ligne.replace("Ã¥", "Å")
-    ligne = ligne.replace("Ã…", "Å")
-    ligne = ligne.replace("Ã£", "ã")
-    ligne = ligne.replace("Ãƒ", "Ã")
-    return ligne
+    text = text.replace("Ã¡", "á")
+    text = text.replace("Ã¥", "Å")
+    text = text.replace("Ã…", "Å")
+    text = text.replace("Ã£", "ã")
+    text = text.replace("Ãƒ", "Ã")
+    return text

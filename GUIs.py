@@ -2378,15 +2378,9 @@ class logInApp():
             identifiant = str(self.userTxt.get())
             code = str(self.codeTxt.get())
 
-            print("identifiant = " + str(self.userTxt.get()))
-            print("Code = " + str(self.codeTxt.get()))
-
             while numeroTable != len(tableEmployes) and found == False:
 
                 print("---------- Employé numéro {} ----------".format(numeroTable+1))
-                print("user = " + tableEmployes[numeroTable].user)
-                print("email = " + str(tableEmployes[numeroTable].email))
-                print("Code = " + str(tableEmployes[numeroTable].code))
                 if identifiant == str(tableEmployes[numeroTable].user) and code == str(tableEmployes[numeroTable].code)\
                         or identifiant == str(tableEmployes[numeroTable].email) and code == str(tableEmployes[numeroTable].code):
                     #print("Gotcha!")
