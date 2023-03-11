@@ -69,7 +69,7 @@ def getLocalisationBandeAnnonces():
 localisationImages = getLocalisationImages()
 localisationBandeAnnonces = getLocalisationBandeAnnonces()
 
-localisationImagesGitHub = r"https://raw.githubusercontent.com/Creativipi/Rewind/main/Images/"
+localisationImagesGitHub = r"https://raw.githubusercontent.com/Creativipi/Rewind/imageMain/Images/"
 
 class addCarteApp():
     "Responsable de l'ajout de nouvelles cartes"
