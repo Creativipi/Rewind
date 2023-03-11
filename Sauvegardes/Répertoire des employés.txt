@@ -1,2 +1,2 @@
-Roy,Alexandre,aaa@aaa.com,gerant,assistant gérant Utilisateur primaire -2,01/12/2022,1
-Charest,Sebastien Paul,ccc@aaa.com,gérant,gerant utilisateur primaire-1,01/12/2022,1
+Roy,Alexandre,aaa@aaa.com,gérant,assistG2,01/12/2022,1
+Charest,Sebastien Paul,ccc@aaa.com,gérant,primeG1,01/12/2022,1

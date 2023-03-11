@@ -6,6 +6,8 @@ from functools import partial
 import os
 import platform
 import time
+import requests
+import shutil
 
 import Personne
 
@@ -67,6 +69,7 @@ def getLocalisationBandeAnnonces():
 localisationImages = getLocalisationImages()
 localisationBandeAnnonces = getLocalisationBandeAnnonces()
 
+localisationImagesGitHub = r"https://raw.githubusercontent.com/Creativipi/Rewind/main/Images/"
 
 class addCarteApp():
     "Responsable de l'ajout de nouvelles cartes"
@@ -1689,7 +1692,7 @@ class gererComptesApp():
 
                 print("---Le compte de {} {} a été supprimé!---".format(client.prenom, client.nom))
             except:
-                print("Une erreur est survenue lors de la suppression du compte de {} {}".format(employe.prenom, employe.nom))
+                print("Une erreur est survenue lors de la suppression du compte de {} {}".format(client.prenom, client.nom))
             gererComptesApp()
 
 
@@ -1799,6 +1802,64 @@ class mainWindow():
         #self.film2Label = Label(self.fen, background="#aca", text="Le Grinch").grid(row=4, column=3)
         self.btnJouer1 = Button(self.fen, text="Jouer ce film", command=partial(self.openFile, r"Le Grinch - Bande Annonce.mp4")).grid(row=6, column=3)
         self.btnInfo1 = Button(self.fen, text="Infos", command=partial(self.infoFilm, "Le Grinch")).grid(row=7, column=3)
+
+        # Images des affiches
+
+        try:
+            # Vérifie si l'image de « Les Hommes en noir » est dans le fichier
+            if os.path.isfile(localisationImages + r"Les Hommes en noir 333x500.png"):
+                print("Fichier « Les Hommes en noir 333x500.png » trouvé!")
+            else:
+                print("Aucun fichier « Les Hommes en noir 333x500.png » de trouvé")
+
+                lien = localisationImagesGitHub + r"Les%20Hommes%20en%20noir%20333x500.png"
+
+                reponse = requests.get(lien, stream=True)
+
+                if reponse.status_code == 200:
+
+                    # Évite le fichier téléchargé d'avoir une largeur de zéro
+                    reponse.raw.decode_content = True
+
+                    # Ouvre un fichier local
+                    with open("Les Hommes en noir 333x500.png",'wb') as f:
+                        shutil.copyfileobj(reponse.raw, f)
+
+                    print("Image téléchargée avec succès: ", "Les Hommes en noir 333x500.png")
+
+                    shutil.move(path + r"\Les Hommes en noir 333x500.png", localisationImages + r"Les Hommes en noir 333x500.png")
+                    #print("Image déplacée")
+                else:
+                    print("L'image n'a pas pue être obtenue")
+
+            # Vérifie si l'image de « Le Grinch » est dans le fichier
+            if os.path.isfile(localisationImages + r"Le Grinch 354x500.png"):
+                print("Fichier « Le Grinch 354x500.png » trouvé!")
+            else:
+                print("Aucun fichier « Le Grinch 354x500.png » de trouvé")
+
+                lien = localisationImagesGitHub + r"Le%20Grinch%20354x500.png"
+
+                reponse = requests.get(lien, stream=True)
+
+                if reponse.status_code == 200:
+
+                    # Évite le fichier téléchargé d'avoir une largeur de zéro
+                    reponse.raw.decode_content = True
+
+                    # Ouvre un fichier local
+                    with open(r"Le Grinch 354x500.png", 'wb') as f:
+                        shutil.copyfileobj(reponse.raw, f)
+
+                    print("Image téléchargée avec succès: ", r"Le Grinch 354x500.png")
+
+                    shutil.move(path + r"\Le Grinch 354x500.png", localisationImages + r"Le Grinch 354x500.png")
+                    #print("Image déplacée")
+                else:
+                    print("L'image n'a pas pue être obtenue")
+        except:
+            print("Il est impossible au script d'accéder aux images en ligne")
+
 
         # Images des affiches
         try:
@@ -2246,7 +2307,6 @@ class logInApp():
         numeroTable = 0
 
         # Recherche des employés
-
         try:
 
 
@@ -2297,7 +2357,6 @@ class logInApp():
         # Recherche des clients
 
         numeroTable = 0
-
 
         try:
 

@@ -515,7 +515,7 @@ def recuperationClients():
             try:
                 infos = client.replace("\n", "")
                 splitInfos = infos.split(",")
-                cl = Client(splitInfos[0], splitInfos[1], splitInfos[2], splitInfos[3], splitInfos[4], splitInfos[5], splitInfos[6])
+                cl = Client(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]), iCS(splitInfos[3]), iCS(splitInfos[4]), iCS(splitInfos[5]), iCS(splitInfos[6]))
                 listeClients.append(cl)
             except:
                 print("La sauvegarde des clients est corrompue")
@@ -540,7 +540,7 @@ def recuperationEmployes():
             try:
                 infos = employe.replace("\n", "")
                 splitInfos = infos.split(",")
-                emp = Employe(splitInfos[0], splitInfos[1], splitInfos[2], splitInfos[3], splitInfos[4], splitInfos[5], splitInfos[6])
+                emp = Employe(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]), iCS(splitInfos[3]), iCS(splitInfos[4]), iCS(splitInfos[5]), iCS(splitInfos[6]))
                 listeEmployes.append(emp)
             except:
                 print("La sauvegarede des employés est corrompue")
@@ -565,7 +565,7 @@ def recuperationActeurs():
             try:
                 infos = acteur.replace("\n", "")
                 splitInfos = infos.split(",")
-                act = Acteur(splitInfos[0], splitInfos[1], int(splitInfos[2]))
+                act = Acteur(iCS(splitInfos[0]), iCS(splitInfos[1]), int(splitInfos[2]))
                 listeActeurs.append(act)
             except:
                 print("La sauvegarde des acteurs est corrompue")
@@ -597,7 +597,7 @@ def recuperationCartes():
                     for item in cartes:
                         infos = item.replace("\n", "")
                         splitInfos = infos.split(",")
-                        c = CarteDeCredit(splitInfos[0], splitInfos[1], splitInfos[2], splitInfos[3])
+                        c = CarteDeCredit(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]), iCS(splitInfos[3]))
                         listeCartes.append(c)
 
                     listeClientsCarte.append(listeCartes)
@@ -633,7 +633,7 @@ def recuperationFilmsJoues():
                     for item in films:
                         infos = item.replace("\n", "")
                         splitInfos = infos.split("§")
-                        f = FilmsJoues(splitInfos[0], splitInfos[1], splitInfos[2], splitInfos[3], splitInfos[4])
+                        f = FilmsJoues(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]), iCS(splitInfos[3]), iCS(splitInfos[4]))
                         listeFilms.append(f)
 
                     listeActeurFilm.append(listeFilms)
@@ -663,7 +663,7 @@ def recuperationFilms():
             try:
                 infos = film.replace("\n", "")
                 splitInfos = infos.split("§")
-                flm = Film(splitInfos[0], splitInfos[1], splitInfos[2])
+                flm = Film(iCS(splitInfos[0]), iCS(splitInfos[1]), iCS(splitInfos[2]))
                 listeFilms.append(flm)
             except:
                 print("La sauvegarde des films est corrompue")
@@ -695,7 +695,7 @@ def recuperationGenres():
                     for item in genres:
                         infos = item.replace("\n", "")
                         splitInfos = infos.split("§")
-                        gnr = Genre(splitInfos[0], splitInfos[1])
+                        gnr = Genre(iCS(splitInfos[0]), iCS(splitInfos[1]))
                         listeGenres.append(gnr)
 
                     listeFilmsGenre.append(listeGenres)
@@ -748,3 +748,69 @@ def recuperationAll():
             #print(genre)
             film.addGenre(genre)
         numeroFilm = numeroFilm + 1
+
+def iCS(ligne):
+    "Permet le support de certains caractères spéciaux dans leurs transitions entre l'UTF-8 des sauvegardes et les scripts"
+    ligne = ligne.replace("Ã ", "à")
+    ligne = ligne.replace("Ã€", "À")
+    ligne = ligne.replace("Ã¢", "â")
+    ligne = ligne.replace("Ã‚", "Â")
+    ligne = ligne.replace("Ã¤", "ä")
+    ligne = ligne.replace("Ã„", "Ä")
+    # Le caractère « Á » est inutilisable
+    ligne = ligne.replace("Ã©", "é")
+    ligne = ligne.replace("Ã‰", "É")
+    ligne = ligne.replace("Ã¨", "è")
+    ligne = ligne.replace("Ãˆ", "È")
+    ligne = ligne.replace("Ãª", "ê")
+    ligne = ligne.replace("ÃŠ", "Ê")
+    ligne = ligne.replace("Ã«", "ë")
+    ligne = ligne.replace("Ã‹", "Ë")
+    ligne = ligne.replace("Ã­", "í")
+    ligne = ligne.replace("Ã¬", "ì")
+    ligne = ligne.replace("ÃŒ", "Ì")
+    ligne = ligne.replace("Ã®", "î")
+    ligne = ligne.replace("ÃŽ", "Î")
+    ligne = ligne.replace("Ã¯", "ï")
+    # Les caractères « Ï » et « Í » sont inutilisables
+    ligne = ligne.replace("Ã³", "ó")
+    ligne = ligne.replace("Ã“", "Ó")
+    ligne = ligne.replace("Ã²", "ò")
+    ligne = ligne.replace("Ã’", "Ò")
+    ligne = ligne.replace("Ã´", "ô")
+    ligne = ligne.replace("Ã”", "Ô")
+    ligne = ligne.replace("Ã¶", "ö")
+    ligne = ligne.replace("Ã–", "Ö")
+    ligne = ligne.replace("Ã¸", "ø")
+    ligne = ligne.replace("Ã˜", "Ø")
+    ligne = ligne.replace("Ãº", "ú")
+    ligne = ligne.replace("Ãš", "Ú")
+    ligne = ligne.replace("Ã¹", "ù")
+    ligne = ligne.replace("Ã™", "Ù")
+    ligne = ligne.replace("Ã»", "û")
+    ligne = ligne.replace("Ã›", "Û")
+    ligne = ligne.replace("Ã¼", "ü")
+    ligne = ligne.replace("Ãœ", "Ü")
+    ligne = ligne.replace("Ã½", "ý")
+    ligne = ligne.replace("á»³", "ỳ")
+    ligne = ligne.replace("á»²", "Ỳ")
+    ligne = ligne.replace("Å·", "ŷ")
+    ligne = ligne.replace("Å¶", "Ŷ")
+    ligne = ligne.replace("Ã¿", "ÿ")
+    ligne = ligne.replace("Å¸", "Ÿ")
+    # Le caractère « Ý » est inutilisable
+    ligne = ligne.replace("Ã§", "ç")
+    ligne = ligne.replace("Ã‡", "Ç")
+    ligne = ligne.replace("Ã±", "ñ")
+    ligne = ligne.replace("Ã‘", "Ñ")
+    ligne = ligne.replace("Ã¦", "æ")
+    ligne = ligne.replace("Ã†", "Æ")
+    ligne = ligne.replace("Å“", "œ")
+    ligne = ligne.replace("Å’", "Œ")
+    # Caractères utilisés pour la représentation d'autres caractères, juste au cas-où
+    ligne = ligne.replace("Ã¡", "á")
+    ligne = ligne.replace("Ã¥", "Å")
+    ligne = ligne.replace("Ã…", "Å")
+    ligne = ligne.replace("Ã£", "ã")
+    ligne = ligne.replace("Ãƒ", "Ã")
+    return ligne
